@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Packaroo Chat Support</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chat-container {
+      width: 90%;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: #0072ff;
+      color: #fff;
+      padding: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .chat-messages {
+      padding: 15px;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message-wrapper {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .message-wrapper.bot {
+      flex-direction: row;
+    }
+
+    .message-wrapper.user {
+      flex-direction: row-reverse;
+    }
+
+    .message {
+      padding: 10px 15px;
+      border-radius: 16px;
+      max-width: 75%;
+      word-wrap: break-word;
+    }
+
+    .user-message {
+      background: #dcf8c6;
+    }
+
+    .bot-message {
+      background: #f1f0f0;
+    }
+
+    .chat-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 0 0 0 12px;
+    }
+
+    .chat-input button {
+      background: #0072ff;
+      color: #fff;
+      border: none;
+      padding: 0 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 0 0 12px 0;
+    }
+
+    .chat-input input:focus, .chat-input button:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <div class="chat-header">Packaroo Support</div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message-wrapper bot">
+        <img src="WhatsApp Image 2025-04-25 at 19.59.48_c80b0be0.jpg" class="chat-logo" alt="Logo" />
+        <div class="message bot-message">Hi! How can I help you today?</div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      if (!message) return;
+
+      const chatBox = document.getElementById('chatMessages');
+
+      const userWrapper = document.createElement('div');
+      userWrapper.classList.add('message-wrapper', 'user');
+      userWrapper.innerHTML = `
+        <img src="—Pngtree—avatar icon profile icon member_5247852.png" class="chat-logo" alt="Logo" />
+        <div class="message user-message">${message}</div>
+      `;
+      chatBox.appendChild(userWrapper);
+
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      setTimeout(() => {
+        const botWrapper = document.createElement('div');
+        botWrapper.classList.add('message-wrapper', 'bot');
+        botWrapper.innerHTML = `
+          <img src="WhatsApp Image 2025-04-25 at 19.59.48_c80b0be0.jpg" class="chat-logo" alt="Logo" />
+          <div class="message bot-message">${getAutoReply(message)}</div>
+        `;
+        chatBox.appendChild(botWrapper);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 700);
+    }
+
+    function getAutoReply(userMsg) {
+      const lower = userMsg.toLowerCase();
+      if (lower.includes('price') || lower.includes('cost')) {
+        return "You can find pricing in the 'Deals for You' section.";
+      } else if (lower.includes('trip') || lower.includes('booking')) {
+        return "Please visit the 'Trips' section for your booking history.";
+      } else if (lower.includes('hello') || lower.includes('hi')) {
+        return "Hello! How can I assist you today?";
+      } else {
+        return "Thanks for reaching out! Our team will respond shortly.";
+      }
+    }
+  </script>
+
+</body><script>
+// ...existing code...
+
+// Support button click handler
+document.querySelector('.support-float').addEventListener('click', () => {
+    // Open chat in a new window
+    const chatWindow = window.open('chat.html', 'PackarooSupport', 
+        'width=400,height=600,resizable=yes,status=yes');
+});
+</script>
+</html>
