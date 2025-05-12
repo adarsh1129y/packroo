@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Packaroo</title>
-<link href="styles.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<style>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Packaroo</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+  <style>
     /* Support Icons */
     .support-icons {
       display: flex;
@@ -57,21 +58,24 @@
       z-index: 9999;
       transition: opacity 0.5s ease;
     }
+
     #splash-screen.hide {
       opacity: 0;
       pointer-events: none;
       visibility: hidden;
     }
+
     #splash-screen img {
       width: 200px;
       animation: fadeIn 1s ease-in;
     }
-    
+
     @keyframes fadeIn {
       from {
         opacity: 0;
         transform: scale(0.8);
       }
+
       to {
         opacity: 1;
         transform: scale(1);
@@ -213,7 +217,8 @@
       transform: rotateY(180deg);
     }
 
-    .card-front, .card-back {
+    .card-front,
+    .card-back {
       backface-visibility: hidden;
       position: absolute;
       width: 100%;
@@ -230,9 +235,17 @@
     }
 
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
     }
 
     /* Price animation */
@@ -262,9 +275,17 @@
     }
 
     @keyframes pricePulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
     /* Share buttons */
@@ -312,12 +333,13 @@
       height: 200%;
     }
 
-    
+
     @keyframes slideIn {
       from {
         transform: translateX(-50%) translateY(-50px);
         opacity: 0;
       }
+
       to {
         transform: translateX(-50%);
         opacity: 1;
@@ -445,6 +467,7 @@
       0% {
         background-position: -100% 0;
       }
+
       100% {
         background-position: 200% 0;
       }
@@ -505,8 +528,13 @@
 
     /* Loading animation */
     @keyframes loading {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     .loading {
@@ -522,7 +550,7 @@
       transform: scale(1.02);
     }
 
- 
+
     /* Particle effect */
     .particle-effect {
       position: fixed;
@@ -594,27 +622,27 @@
       transition: opacity 0.3s;
     }
 
-    #darkModeToggle:checked ~ .toggle-icons .moon-icon {
+    #darkModeToggle:checked~.toggle-icons .moon-icon {
       opacity: 1 !important;
     }
 
-    #darkModeToggle:checked ~ .toggle-icons .sun-icon {
+    #darkModeToggle:checked~.toggle-icons .sun-icon {
       opacity: 0 !important;
     }
 
-    input:checked + .slider {
+    input:checked+.slider {
       background-color: #2196F3;
     }
 
-    input:checked + .slider:before {
+    input:checked+.slider:before {
       transform: translateX(26px);
     }
 
-    input:checked + .slider .moon-icon {
+    input:checked+.slider .moon-icon {
       opacity: 0;
     }
 
-    input:checked + .slider .sun-icon {
+    input:checked+.slider .sun-icon {
       opacity: 1;
     }
   </style>
@@ -654,6 +682,7 @@
 
     /* Mobile responsive styles */
     @media screen and (max-width: 768px) {
+
       /* Header adjustments */
       header {
         padding: 10px;
@@ -732,6 +761,7 @@
 
     /* Desktop responsive styles */
     @media screen and (min-width: 769px) {
+
       /* Header adjustments */
       header {
         padding: 20px;
@@ -813,12 +843,13 @@
       height: 200px;
       animation: fadeIn 0.5s ease-in;
     }
-    
+
     @keyframes fadeIn {
       from {
         opacity: 0;
         transform: scale(0.9);
       }
+
       to {
         opacity: 1;
         transform: scale(1);
@@ -833,6 +864,7 @@
       0% {
         opacity: 1;
       }
+
       100% {
         opacity: 0;
       }
@@ -892,7 +924,7 @@
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  
+
   <style>
     /* Custom styles for the banner */
     .banner-container {
@@ -979,9 +1011,17 @@
 
 
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0px); }
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
     }
   </style>
 
@@ -991,500 +1031,528 @@
   <audio id="clickSound" src="Mouse Click (4).wav"></audio>
 
   <div class="search-container">
-  <input placeholder="Search..." type="text"/>
-  <button onclick="playClickSound()"><img alt="Search" src="magnifying-glass.png"/></button>
-</div>
-<header>
-<div class="logo">
-<img alt="Packaroo Logo" src="Photoroom-20250429_234355.png"/>
-</div>
-
-<div class="dark-toggle">
-  <div class="toggle-icons">
-    <img class="moon-icon" src="half-moon.png" alt="Dark Mode"/>
-    <img class="sun-icon" src="sun.png" alt="Light Mode"/>
+    <input placeholder="Search..." type="text" />
+    <button onclick="playClickSound()"><img alt="Search" src="magnifying-glass.png" /></button>
   </div>
-  <label class="switch">
-    <input id="darkModeToggle" type="checkbox"/>
-    <span class="slider"></span>
-  </label>
-</div>
-</header>
-<!-- Replace your existing banner section with this -->
-<section class="banner-container swiper mySwiper">
+  <header>
+    <div class="logo">
+      <img alt="Packaroo Logo" src="Photoroom-20250429_234355.png" />
+    </div>
+
+    <div class="dark-toggle">
+      <div class="toggle-icons">
+        <img class="moon-icon" src="half-moon.png" alt="Dark Mode" />
+        <img class="sun-icon" src="sun.png" alt="Light Mode" />
+      </div>
+      <label class="switch">
+        <input id="darkModeToggle" type="checkbox" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+  <!-- Replace your existing banner section with this -->
+  <section class="banner-container swiper mySwiper">
     <div class="swiper-wrapper">
-        <!-- Banner 1 - Drone -->
-        <div class="swiper-slide banner-slide">
-            <div class="banner-content">
-                <div class="banner-text">
-                    <h1>FLAT RS 1500 OFF</h1>
-                    <h2>DJI DRONES</h2>
-                    <button class="rent-now clickable">RENT NOW</button>
-                </div>
-                <img src="—Pngtree—drone_5634211.png" alt="Drone" class="banner-img">
-            </div>
+      <!-- Banner 1 - Drone -->
+      <div class="swiper-slide banner-slide">
+        <div class="banner-content">
+          <div class="banner-text">
+            <h1>FLAT RS 1500 OFF</h1>
+            <h2>DJI DRONES</h2>
+            <button class="rent-now clickable">RENT NOW</button>
+          </div>
+          <img src="—Pngtree—drone_5634211.png" alt="Drone" class="banner-img">
         </div>
+      </div>
 
-        <!-- Banner 2 - Camera -->
-        <div class="swiper-slide banner-slide">
-            <div class="banner-content">
-                <div class="banner-text">
-                    <h1>SAVE RS 2000</h1>
-                    <h2>DSLR CAMERAS</h2>
-                    <button class="rent-now clickable">RENT NOW</button>
-                </div>
-                <img src="—Pngtree—dslr digital camera_8231559.png" alt="Camera" class="banner-img">
-            </div>
+      <!-- Banner 2 - Camera -->
+      <div class="swiper-slide banner-slide">
+        <div class="banner-content">
+          <div class="banner-text">
+            <h1>SAVE RS 2000</h1>
+            <h2>DSLR CAMERAS</h2>
+            <button class="rent-now clickable">RENT NOW</button>
+          </div>
+          <img src="—Pngtree—dslr digital camera_8231559.png" alt="Camera" class="banner-img">
         </div>
+      </div>
 
-        <!-- Banner 3 - iPhone -->
-        <div class="swiper-slide banner-slide">
-            <div class="banner-content">
-                <div class="banner-text">
-                    <h1>PREMIUM PHONES</h1>
-                    <h2>IPHONE 15 PRO</h2>
-                    <button class="rent-now clickable">RENT NOW</button>
-                </div>
-                <img src="tatiana-steve-LunVPm34ly4-unsplash.jpg" alt="iPhone" class="banner-img">
-            </div>
+      <!-- Banner 3 - iPhone -->
+      <div class="swiper-slide banner-slide">
+        <div class="banner-content">
+          <div class="banner-text">
+            <h1>PREMIUM PHONES</h1>
+            <h2>IPHONE 15 PRO</h2>
+            <button class="rent-now clickable">RENT NOW</button>
+          </div>
+          <img src="tatiana-steve-LunVPm34ly4-unsplash.jpg" alt="iPhone" class="banner-img">
         </div>
+      </div>
 
-        <!-- Banner 4 - Camping -->
-        <div class="swiper-slide banner-slide">
-            <div class="banner-content">
-                <div class="banner-text">
-                    <h1>WEEKEND SPECIAL</h1>
-                    <h2>CAMPING GEAR</h2>
-                    <button class="rent-now clickable">RENT NOW</button>
-                </div>
-                <img src="pngegg (9).png" alt="Camping Gear" class="banner-img">
-            </div>
+      <!-- Banner 4 - Camping -->
+      <div class="swiper-slide banner-slide">
+        <div class="banner-content">
+          <div class="banner-text">
+            <h1>WEEKEND SPECIAL</h1>
+            <h2>CAMPING GEAR</h2>
+            <button class="rent-now clickable">RENT NOW</button>
+          </div>
+          <img src="pngegg (9).png" alt="Camping Gear" class="banner-img">
         </div>
+      </div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
-</section>
+  </section>
 
-<!-- Add this CSS to your style section -->
-<style>
-    .banner-container {    // Update your dark mode toggle JavaScript
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    
-    darkModeToggle.addEventListener('change', () => {
-        if (darkModeToggle.checked) {
+  <!-- Add this CSS to your style section -->
+  <style>
+    .banner-container {
+      // Update your dark mode toggle JavaScript
+      const darkModeToggle=document.getElementById('darkModeToggle');
+
+      darkModeToggle.addEventListener('change', ()=> {
+          if (darkModeToggle.checked) {
             document.body.classList.add('dark-mode');
             localStorage.setItem('darkMode', 'enabled');
-        } else {
+          }
+
+          else {
             document.body.classList.remove('dark-mode');
             localStorage.setItem('darkMode', null);
-        }        <script>
-        // ...existing code...
-        
-        // Support button click handler
-        document.querySelector('.support-float').addEventListener('click', () => {
-            // Open chat in a new window
-            const chatWindow = window.open('chat.html', 'PackarooSupport', 
+          }
+
+          <script> // ...existing code...
+
+          // Support button click handler
+          document.querySelector('.support-float').addEventListener('click', ()=> {
+              // Open chat in a new window
+              const chatWindow=window.open('chat.html', 'PackarooSupport',
                 'width=400,height=600,resizable=yes,status=yes');
+            });
+          </script>
         });
-        </script>
-    });
-    
-    // Check for saved dark mode preference
-    if (localStorage.getItem('darkMode') === 'enabled') {
+
+      // Check for saved dark mode preference
+      if (localStorage.getItem('darkMode')==='enabled') {
         document.body.classList.add('dark-mode');
-        darkModeToggle.checked = true;
-    }
-        position: relative;        .support-float img {
-            width: 60px;
-            height: 60px;
-            border-radius: 0; /* Remove border radius */
-            box-shadow: none; /* Remove shadow if any */
-        }
-        
-        .support-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            background: transparent; /* Remove any background */
-        }
-        
-        .support-float:hover {
-            transform: scale(1.1);
-        }
-        width: 100%;
-        height: 500px;
-        background: linear-gradient(135deg, #1a237e, #0097a7);
-        overflow: hidden;
+        darkModeToggle.checked=true;
+      }
+
+      position: relative;
+
+      .support-float img {
+        width: 60px;
+        height: 60px;
+        border-radius: 0;
+        /* Remove border radius */
+        box-shadow: none;
+        /* Remove shadow if any */
+      }
+
+      .support-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        background: transparent;
+        /* Remove any background */
+      }
+
+      .support-float:hover {
+        transform: scale(1.1);
+      }
+
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(135deg, #1a237e, #0097a7);
+      overflow: hidden;
     }
 
     .banner-slide {
-        display: flex;
-        align-items: center;
+      display: flex;
+      align-items: center;
     }
 
     .banner-content {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 5%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
     }
 
     .banner-text {
-        color: white;
-        z-index: 2;
+      color: white;
+      z-index: 2;
     }
 
     .banner-text h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .banner-text h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        color: #4fc3f7;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #4fc3f7;
     }
 
     .banner-img {
-        max-height: 80%;
-        max-width: 50%;
-        object-fit: contain;
-        animation: float 3s ease-in-out infinite;
+      max-height: 80%;
+      max-width: 50%;
+      object-fit: contain;
+      animation: float 3s ease-in-out infinite;
     }
 
     @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
     }
 
     .swiper-pagination-bullet {
-        width: 12px;
-        height: 12px;
-        background: rgba(255,255,255,0.5);
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.5);
     }
 
     .swiper-pagination-bullet-active {
-        background: white;
+      background: white;
     }
 
     .swiper-button-next,
     .swiper-button-prev {
-        color: white;
+      color: white;
     }
 
     .rent-now {
-        padding: 12px 24px;
-        font-size: 1.2rem;
-        background: #ff4081;
-        color: white;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        transition: transform 0.3s ease;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      background: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
     .rent-now:hover {
-        transform: scale(1.05);
+      transform: scale(1.05);
     }
-</style>
+  </style>
 
-<!-- Add this JavaScript before closing body tag -->
-<script>
+  <!-- Add this JavaScript before closing body tag -->
+  <script>
     const swiper = new Swiper(".mySwiper", {
-        effect: "fade",
-        loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        fadeEffect: {
-            crossFade: true
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        }
+      effect: "fade",
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      fadeEffect: {
+        crossFade: true
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      }
     });
-</script>
+  </script>
 
-<section class="deals">
-<h3>DEALS FOR YOU</h3>
-<div class="deal-cards">
-<div class="card">
-<img alt="GoPro" src="pngwing.com (37).png"/>
-<div class="price pop-red">₹1999</div>
-<div class="deal-tag">82% OFF</div>
-<p>LIMITED TIME DEAL</p>
-</div>
-<div class="card">
-<img alt="DSLR Camera" src="—Pngtree—dslr digital camera_8231559.png"/>
-<div class="price pop-red">₹1499</div>
-<div class="deal-tag">80% OFF</div>
-<p>LIMITED TIME DEAL</p>
-</div>
-<div class="card">
-<img alt="Mini Drone" src="pngegg (8).png"/>
-<div class="price pop-red">₹2999</div>
-<div class="deal-tag">77% OFF</div>
-<p>LIMITED TIME DEAL</p>
-</div>
-<div class="card">
-<img alt="Tent" src="pngegg (9).png"/>
-<div class="price pop-red">₹500</div>
-<div class="deal-tag">85% OFF</div>
-<p>LIMITED TIME DEAL</p>
-</div>L
+  <section class="deals">
+    <h3>DEALS FOR YOU</h3>
+    <div class="deal-cards">
+      <div class="card">
+        <img alt="GoPro" src="pngwing.com (37).png" />
+        <div class="price pop-red">₹1999</div>
+        <div class="deal-tag">82% OFF</div>
+        <p>LIMITED TIME DEAL</p>
+      </div>
+      <div class="card">
+        <img alt="DSLR Camera" src="—Pngtree—dslr digital camera_8231559.png" />
+        <div class="price pop-red">₹1499</div>
+        <div class="deal-tag">80% OFF</div>
+        <p>LIMITED TIME DEAL</p>
+      </div>
+      <div class="card">
+        <img alt="Mini Drone" src="pngegg (8).png" />
+        <div class="price pop-red">₹2999</div>
+        <div class="deal-tag">77% OFF</div>
+        <p>LIMITED TIME DEAL</p>
+      </div>
+      <div class="card">
+        <img alt="Tent" src="pngegg (9).png" />
+        <div class="price pop-red">₹500</div>
+        <div class="deal-tag">85% OFF</div>
+        <p>LIMITED TIME DEAL</p>
+      </div>L
 
       <!DOCTYPE html>
 
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Packaroo</title>
-<link href="styles.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-</head>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <title>Packaroo</title>
+        <link href="styles.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap"
+          rel="stylesheet" />
+      </head>
+
 <body>
-<header>
-<div class="logo">
-<img alt="Packaroo Logo" src="Photoroom-20250429_234355.png"/>
-</div>
-</header>
-<section class="products">
-<h3>Best Deals on Tech &amp; Fashion</h3>
-<div class="product-grid">
-  <!-- Skeleton loading -->
-  <div class="card skeleton" style="display: none;">
-    <div class="skeleton-image"></div>
-    <div class="skeleton-content">
-      <div class="skeleton-price"></div>
-      <div class="skeleton-tag"></div>
-      <div class="skeleton-title"></div>
-      <div class="skeleton-specs">
-        <div class="skeleton-spec"></div>
-        <div class="skeleton-spec"></div>
-        <div class="skeleton-spec"></div>
-        <div class="skeleton-spec"></div>
-        <div class="skeleton-spec"></div>
+  <header>
+    <div class="logo">
+      <img alt="Packaroo Logo" src="Photoroom-20250429_234355.png" />
+    </div>
+  </header>
+  <section class="products">
+    <h3>Best Deals on Tech &amp; Fashion</h3>
+    <div class="product-grid">
+      <!-- Skeleton loading -->
+      <div class="card skeleton" style="display: none;">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-content">
+          <div class="skeleton-price"></div>
+          <div class="skeleton-tag"></div>
+          <div class="skeleton-title"></div>
+          <div class="skeleton-specs">
+            <div class="skeleton-spec"></div>
+            <div class="skeleton-spec"></div>
+            <div class="skeleton-spec"></div>
+            <div class="skeleton-spec"></div>
+            <div class="skeleton-spec"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img alt="iPhone" src="tatiana-steve-LunVPm34ly4-unsplash.jpg" />
+        <div class="price pop-red">₹999</div>
+        <div class="deal-tag">59% OFF</div>
+        <p><strong>Latest iPhone on Rent</strong></p>
+        <ul class="specs">
+          <li>Brand: Apple</li>
+          <li>Storage: 128GB</li>
+          <li>Camera: Dual 12MP</li>
+          <li>Battery Life: 20 Hours</li>
+          <li>Warranty: 6 Months</li>
+        </ul>
+
+      </div>L
+      <div class="card">
+        <img alt="Jacket" src="Screenshot 2025-05-03 005807.png" />
+        <div class="price pop-red">₹399</div>
+        <div class="deal-tag">50% OFF</div>
+        <p><strong>Stylish Winter Jacket</strong></p>
+        <ul class="specs">
+          <li>Material: Waterproof Polyester</li>
+          <li>Size: S / M / L / XL</li>
+          <li>Color: Black &amp; Blue</li>
+          <li>Features: Windproof &amp; Warm</li>
+          <li>Warranty: 1 Year</li>
+        </ul>
+      </div>
+      <div class="card">
+        <img alt="Shoes" src="—Pngtree—waterproof trekking shoes_18543672.png" />
+        <div class="price pop-red">₹199</div>
+        <div class="deal-tag">90% OFF</div>
+        <p><strong>Premium Running Shoes</strong></p>
+        <ul class="specs">
+          <li>Brand: Nike</li>
+          <li>Material: Breathable Mesh</li>
+          <li>Size: 7 / 8 / 9 / 10</li>
+          <ul class="specs">
+            <li>Storage: 256GB</li>
+            <li>Read Speed: 100MB/s</li>
+            <li>Compatibility: Phones &amp; Cameras</li>
+            <li>Waterproof &amp; Shockproof</li>
+          </ul>
+      </div>
+      <div class="card">
+        <img alt="Power Bank" src="power bank.jpg" />
+        <div class="price pop-red">₹99</div>
+        <div class="deal-tag">90% OFF</div>
+        <p><strong>Fast Charging Power Bank</strong></p>
+        <ul class="specs">
+          <li>Capacity: 20,000mAh</li>
+          <li>Fast Charge: 18W PD &amp; QC</li>
+          <li>USB Ports: 2 Outputs</li>
+          <li>Wireless Charging: Yes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <img alt="Camera Lens" src="camera lense.jpg" />
+        <div class="price pop-red">₹999</div>
+        <div class="deal-tag">225% OFF</div>
+        <p><strong>Professional DSLR Lens</strong></p>
+        <ul class="specs">
+          <li>Focal Length: 50mm</li>
+          <li>Aperture: f/1.8</li>
+          <li>Brand: Canon</li>
+          <li>Compatibility: DSLR &amp; Mirrorless</li>
+        </ul>
+      </div>
+      <div class="card">
+        <img alt="Gimbal" src="gimbals.jpg" />
+        <div class="price pop-red">₹999</div>
+        <div class="deal-tag">99% OFF</div>
+        <p><strong>Steady Shooting Gimbal</strong></p>
+        <ul class="specs">
+          <li>Axis: 3-Axis Stabilization</li>
+          <li>Battery Life: 10 Hours</li>
+          <li>Compatible with: Phones &amp; DSLR</li>
+          <li>Wireless: Bluetooth Control</li>
+        </ul>
       </div>
     </div>
-  </div>
-
-  <div class="card">
-      <img alt="iPhone" src="tatiana-steve-LunVPm34ly4-unsplash.jpg"/>
-      <div class="price pop-red">₹999</div>
-      <div class="deal-tag">59% OFF</div>
-      <p><strong>Latest iPhone on Rent</strong></p>
-      <ul class="specs">
-        <li>Brand: Apple</li>
-        <li>Storage: 128GB</li>
-        <li>Camera: Dual 12MP</li>
-        <li>Battery Life: 20 Hours</li>
-        <li>Warranty: 6 Months</li>
-      </ul>
-
-</div>L
-<div class="card">
-<img alt="Jacket" src="Screenshot 2025-05-03 005807.png"/>
-<div class="price pop-red">₹399</div>
-<div class="deal-tag">50% OFF</div>
-<p><strong>Stylish Winter Jacket</strong></p>
-<ul class="specs">
-<li>Material: Waterproof Polyester</li>
-<li>Size: S / M / L / XL</li>
-<li>Color: Black &amp; Blue</li>
-<li>Features: Windproof &amp; Warm</li>
-<li>Warranty: 1 Year</li>
-</ul>
-</div>
-<div class="card">
-<img alt="Shoes" src="—Pngtree—waterproof trekking shoes_18543672.png"/>
-<div class="price pop-red">₹199</div>
-<div class="deal-tag">90% OFF</div>
-<p><strong>Premium Running Shoes</strong></p>
-<ul class="specs">
-<li>Brand: Nike</li>
-<li>Material: Breathable Mesh</li>
-<li>Size: 7 / 8 / 9 / 10</li>
-<ul class="specs">
-<li>Storage: 256GB</li>
-<li>Read Speed: 100MB/s</li>
-<li>Compatibility: Phones &amp; Cameras</li>
-<li>Waterproof &amp; Shockproof</li>
-</ul>
-</div>
-<div class="card">
-<img alt="Power Bank" src="power bank.jpg"/>
-<div class="price pop-red">₹99</div>
-<div class="deal-tag">90% OFF</div>
-<p><strong>Fast Charging Power Bank</strong></p>
-<ul class="specs">
-<li>Capacity: 20,000mAh</li>
-<li>Fast Charge: 18W PD &amp; QC</li>
-<li>USB Ports: 2 Outputs</li>
-<li>Wireless Charging: Yes</li>
-</ul>
-</div>
-<div class="card">
-<img alt="Camera Lens" src="camera lense.jpg"/>
-<div class="price pop-red">₹999</div>
-<div class="deal-tag">225% OFF</div>
-<p><strong>Professional DSLR Lens</strong></p>
-<ul class="specs">
-<li>Focal Length: 50mm</li>
-<li>Aperture: f/1.8</li>
-<li>Brand: Canon</li>
-<li>Compatibility: DSLR &amp; Mirrorless</li>
-</ul>
-</div>
-<div class="card">
-<img alt="Gimbal" src="gimbals.jpg"/>
-<div class="price pop-red">₹999</div>
-<div class="deal-tag">99% OFF</div>
-<p><strong>Steady Shooting Gimbal</strong></p>
-<ul class="specs">
-<li>Axis: 3-Axis Stabilization</li>
-<li>Battery Life: 10 Hours</li>
-<li>Compatible with: Phones &amp; DSLR</li>
-<li>Wireless: Bluetooth Control</li>
-</ul>
-</div>
-</div>
-</section>
+  </section>
 </body>
+
 </html>
 </div>
 </section>
 <nav>
-<a href="#">drones</a>
-<a href="#">cameras</a>
-<a href="#">accesories</a>
-<a href="#">tools</a>
-<a href="#">clothes</a>
-<span></span>
+  <a href="#">drones</a>
+  <a href="#">cameras</a>
+  <a href="#">accesories</a>
+  <a href="#">tools</a>
+  <a href="#">clothes</a>
+  <span></span>
 </nav>
 <footer class="bottom-nav">
-<div class="icon"><img alt="Home" src="—Pngtree—vector house icon_4013710.png"><span>Home</span></img></div>
+  <div class="icon"><img alt="Home" src="—Pngtree—vector house icon_4013710.png"><span>Home</span></img></div>
 
-<a href="category/">
-<div class="icon" ><img alt="Cart" src="category_16079561.png"><span>Category</span></img></div></a>
+  <a href="category/">
+    <div class="icon"><img alt="Cart" src="category_16079561.png"><span>Category</span></img></div>
+  </a>
 
-    
-<a href="wheel/">
-<div class="icon"><img alt="Wheel" src="pngwing.com (42).png"><span>Wheel</span></img></div></a>
+  <a href="wheel/">
+    <div class="icon"><img alt="Wheel" src="pngwing.com (42).png"><span>Wheel</span></img></div>
+  </a>
+
+  <a href="location/">
+    <div class="icon"><img alt="Location" src="pngwing.com (41).png"><span>Location</span></img></div>
+  </a>
 
 
-<div class="icon"><img alt="Location" src="pngwing.com (41).png"><span>Location</span></img></div>
-<div class="icon"><img alt="Profile" src="—Pngtree—avatar icon profile icon member_5247852.png"><span>Profile</span></img></div>
+  <div class="icon"><img alt="Profile"
+      src="—Pngtree—avatar icon profile icon member_5247852.png"><span>Profile</span></img></div>
 </footer>
 <!-- Sounds & Ripple -->
 <div class="ripple-container"></div>
 <audio id="clickSound" preload="auto" src="mouse-click.mp3"></audio>
-  <a href="chat.html">
+<a href="chat.html">
 
-<!-- Update the support button HTML -->
-<div class="support-float clickable">
-  <img src="a-modern-3d-customer-support-icon-featur__UF6edupQw-AcGctMzo8TA_xQhADY0jSK-YQhJxqbYy1w.png" alt="Support">
-</div>
-  </a>
+  <!-- Update the support button HTML -->
+  <div class="support-float clickable">
+    <img src="a-modern-3d-customer-support-icon-featur__UF6edupQw-AcGctMzo8TA_xQhADY0jSK-YQhJxqbYy1w.png" alt="Support">
+  </div>
+</a>
 
 <!-- Support Icons -->
 <div class="support-icons">
   <a href="https://wa.me/917004347593" target="_blank" class="support-icon whatsapp-icon">
-    <img src="https://img.icons8.com/fluency/48/000000/whatsapp.png" alt="WhatsApp"/>
+    <img src="https://img.icons8.com/fluency/48/000000/whatsapp.png" alt="WhatsApp" />
   </a>
-  <a href="https://www.instagram.com/packa.roo?igsh=YzUwb3E4eHJkOGV4" target="_blank" class="support-icon instagram-icon">
-    <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram"/>
+  <a href="https://www.instagram.com/packa.roo?igsh=YzUwb3E4eHJkOGV4" target="_blank"
+    class="support-icon instagram-icon">
+    <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram" />
   </a>
 </div>
 
 <!-- JS Scripts -->
 <script>
-    // Splash fade
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        const splash = document.getElementById("splash-screen");
-        splash.classList.add("hide");
-        setTimeout(() => splash.style.display = "none", 300);
-      }, 300);
-    });
+  // Splash fade
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const splash = document.getElementById("splash-screen");
+      splash.classList.add("hide");
+      setTimeout(() => splash.style.display = "none", 300);
+    }, 300);
+  });
 
-    // Dark mode toggle
-    const toggle = document.getElementById('darkModeToggle');
-    toggle.addEventListener('change', () => {
-      document.body.classList.toggle('dark-mode');
-    });
+  // Dark mode toggle
+  const toggle = document.getElementById('darkModeToggle');
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+  });
 
-    // Pop effect
-    document.querySelectorAll('.card, button, .bottom-nav img').forEach(el => {
-      el.addEventListener('click', () => {
-        el.classList.add('pop-effect');
-        setTimeout(() => el.classList.remove('pop-effect'), 300);
-      });
+  // Pop effect
+  document.querySelectorAll('.card, button, .bottom-nav img').forEach(el => {
+    el.addEventListener('click', () => {
+      el.classList.add('pop-effect');
+      setTimeout(() => el.classList.remove('pop-effect'), 300);
     });
+  });
 
-    // Ripple effect
-    document.querySelectorAll('.ripple-container').forEach(container => {
-      container.addEventListener('click', function (e) {
-        const ripple = document.createElement('div');
-        ripple.classList.add('ripple');
-        const rect = this.getBoundingClientRect();
-        ripple.style.left = `${e.clientX - rect.left}px`;
-        ripple.style.top = `${e.clientY - rect.top}px`;
-        this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-      });
+  // Ripple effect
+  document.querySelectorAll('.ripple-container').forEach(container => {
+    container.addEventListener('click', function (e) {
+      const ripple = document.createElement('div');
+      ripple.classList.add('ripple');
+      const rect = this.getBoundingClientRect();
+      ripple.style.left = `${e.clientX - rect.left}px`;
+      ripple.style.top = `${e.clientY - rect.top}px`;
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
     });
+  });
 
-    // Click sound
-    const clickSound = document.getElementById('clickSound');
-    document.querySelectorAll('.clickable').forEach(el => {
-      el.addEventListener('click', () => {
-        if (clickSound) {
-          clickSound.currentTime = 0;
-          clickSound.play();
-        }
-      });
+  // Click sound
+  const clickSound = document.getElementById('clickSound');
+  document.querySelectorAll('.clickable').forEach(el => {
+    el.addEventListener('click', () => {
+      if (clickSound) {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      }
     });
-  </script>
+  });
+</script>
 
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const swiper = new Swiper(".mySwiper", {
-        effect: "fade",
-        loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        fadeEffect: {
-          crossFade: true,
-        },
-      });
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper(".mySwiper", {
+      effect: "fade",
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      fadeEffect: {
+        crossFade: true,
+      },
     });
-  </script>
+  });
+</script>
 <!-- Quick View Modal -->
 <div id="quickViewModal" class="modal">
   <div class="modal-content">
@@ -1507,4 +1575,5 @@
 <script src="script.js"></script>
 <script src="particles.js"></script>
 </body>
+
 </html>
