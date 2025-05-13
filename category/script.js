@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const today = new Date().toISOString().split('T')[0];
     const fromDate = document.getElementById('fromDate');
     const toDate = document.getElementById('toDate');
-    
+
     if (fromDate) fromDate.min = today;
     if (toDate) toDate.min = today;
 
     // Handle rent button clicks
     document.querySelectorAll('.rent-button').forEach(button => {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function (e) {
             e.preventDefault();
             const productItem = this.closest('.product-item');
             if (!productItem) return;
@@ -45,7 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Reset form fields
             if (fromDate) fromDate.value = '';
             if (toDate) toDate.value = '';
-            document.getElementById('location').value = '';
+            document.getElementById('fullName').value = '';
+            document.getElementById('phoneNumber').value = '';
+            document.getElementById('streetAddress').value = '';
+            document.getElementById('city').value = '';
+            document.getElementById('state').value = '';
+            document.getElementById('zipCode').value = '';
+            document.getElementById('country').value = '';
+            document.getElementById('deliveryInstructions').value = '';
 
             // Show modal
             rentModal.style.display = 'block';
@@ -79,25 +86,39 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const fromDate = document.getElementById('fromDate').value;
         const toDate = document.getElementById('toDate').value;
-        const location = document.getElementById('location').value;
+        const fullName = document.getElementById('fullName').value;
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const streetAddress = document.getElementById('streetAddress').value;
+        const city = document.getElementById('city').value;
+        const state = document.getElementById('state').value;
+        const zipCode = document.getElementById('zipCode').value;
+        const country = document.getElementById('country').value;
 
-        if (fromDate && toDate && location) {
+        if (fromDate && toDate && fullName && phoneNumber && streetAddress && city && state && zipCode && country) {
             // Change button color to green
             confirmBtn.classList.add('success');
-            
-            // Show thank you modal
-            const thankYouModal = document.getElementById('thankYouModal');
-            thankYouModal.style.display = 'block';
-            
-            // Reset animation
-            const content = thankYouModal.querySelector('.message-content');
-            content.style.animation = 'none';
-            void content.offsetWidth;
-            content.style.animation = 'messageIn 0.5s ease-out forwards';
-            
+
+            // Trigger confetti animation
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'],
+                disableForReducedMotion: true
+            });
+
+            // Show thank you message
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            messageContent.innerHTML = `
+                <h2>Thank You!</h2>
+                <p>Your rental request has been received. We'll contact you shortly to confirm your booking.</p>
+            `;
+            rentModal.querySelector('.modal-content').appendChild(messageContent);
+
             // Hide after 3 seconds
             setTimeout(() => {
-                thankYouModal.style.display = 'none';
+                messageContent.remove();
                 // Reset button color
                 confirmBtn.classList.remove('success');
                 // Close rent modal
@@ -121,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (fromDate && toDate && location) {
             // Show thank you modal
             thankYouModal.style.display = 'block';
-            
+
             // Hide thank you modal after 3 seconds
             setTimeout(() => {
                 thankYouModal.style.display = 'none';
@@ -136,3 +157,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+
