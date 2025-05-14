@@ -168,6 +168,7 @@
       box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
       position: sticky;
       bottom: 0;
+      z-index: 100;
     }
 
     .quick-suggestions {
@@ -224,6 +225,8 @@
       display: flex;
       gap: 8px;
       padding: 0 5px;
+      position: relative;
+      margin-bottom: env(safe-area-inset-bottom, 0);
     }
 
     .chat-input input {
@@ -234,6 +237,7 @@
       border-radius: 20px;
       transition: all 0.2s ease;
       -webkit-appearance: none;
+      margin-bottom: 0;
     }
 
     .chat-input input:focus {
@@ -252,6 +256,11 @@
       border-radius: 20px;
       transition: all 0.2s ease;
       -webkit-tap-highlight-color: transparent;
+      min-width: 60px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .chat-input button:active {
@@ -349,7 +358,21 @@
       }
 
       .chat-input {
-        padding: 10px;
+        padding: 8px;
+        padding-bottom: calc(8px + env(safe-area-inset-bottom, 0));
+      }
+
+      .input-container {
+        padding: 0;
+      }
+
+      .chat-input input {
+        padding: 8px 12px;
+      }
+
+      .chat-input button {
+        padding: 0 15px;
+        min-width: 50px;
       }
     }
   </style>
