@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Packaroo Chat Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      position: fixed;
+    }
+
+    .chat-container {
+      width: 100%;
+      height: 100vh;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .chat-header {
+      background: #0072ff;
+      color: #fff;
+      padding: 15px;
+      font-weight: 600;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .chat-header img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+    }
+
+    .chat-header span {
+      position: relative;
+      display: inline-block;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .chat-header span::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: right;
+      animation: underline 0.5s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes underline {
+      from {
+        transform: scaleX(0);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    .chat-messages {
+      padding: 15px;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #f5f7fb;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .message-wrapper {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-wrapper.bot {
+      flex-direction: row;
+    }
+
+    .message-wrapper.user {
+      flex-direction: row-reverse;
+    }
+
+    .message {
+      padding: 10px 14px;
+      border-radius: 16px;
+      max-width: 85%;
+      word-wrap: break-word;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .user-message {
+      background: #0072ff;
+      color: white;
+    }
+
+    .bot-message {
+      background: white;
+      color: #333;
+    }
+
+    .chat-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid #eee;
+      background: white;
+      padding: 12px;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      bottom: 0;
+    }
+
+    .quick-suggestions {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 0 5px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .quick-suggestions::-webkit-scrollbar {
+      display: none;
+    }
+
+    .suggestion-chip {
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid #e4e6eb;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .suggestion-chip:hover {
+      background: #f8f9fa;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-color: #0072ff;
+    }
+
+    .suggestion-chip:active {
+      transform: translateY(0);
+    }
+
+    .suggestion-chip::before {
+      content: '💬';
+      font-size: 14px;
+    }
+
+    .input-container {
+      display: flex;
+      gap: 8px;
+      padding: 0 5px;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: 1px solid #e4e6eb;
+      padding: 10px 14px;
+      font-size: 14px;
+      border-radius: 20px;
+      transition: all 0.2s ease;
+      -webkit-appearance: none;
+    }
+
+    .chat-input input:focus {
+      outline: none;
+      border-color: #0072ff;
+      box-shadow: 0 0 0 2px rgba(0, 114, 255, 0.1);
+    }
+
+    .chat-input button {
+      background: #0072ff;
+      color: #fff;
+      border: none;
+      padding: 0 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .chat-input button:active {
+      transform: scale(0.98);
+    }
+
+    .typing-indicator {
+      display: none;
+      padding: 10px 14px;
+      background: white;
+      border-radius: 16px;
+      margin-left: 6px;
+    }
+
+    .typing-indicator span {
+      height: 6px;
+      width: 6px;
+      background: #0072ff;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 2px;
+      animation: typing 1s infinite;
+    }
+
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes typing {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Scrollbar styling */
+    .chat-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 3px;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    /* Prevent text size adjustment on orientation change */
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Improve touch targets */
+    button,
+    .suggestion-chip {
+      min-height: 44px;
+    }
+
+    /* Prevent pull-to-refresh on mobile */
+    body {
+      overscroll-behavior-y: none;
+    }
+
+    /* Improve scrolling performance */
+    .chat-messages {
+      will-change: transform;
+    }
+
+    @media (max-width: 480px) {
+      .message {
+        max-width: 90%;
+      }
+
+      .chat-header {
+        padding: 12px;
+      }
+
+      .chat-messages {
+        padding: 12px;
+      }
+
+      .chat-input {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <audio id="messageSent" src="iPhone Text Message Sent Sound Effect.mp3"></audio>
+  <audio id="messageReceived" src="WhatsApp Message Sound.mp3"></audio>
+
+  <div class="chat-container">
+    <div class="chat-header">
+      <img src="WhatsApp Image 2025-04-25 at 19.59.48_c80b0be0.jpg" alt="Packaroo Logo" />
+      <span>Packaroo Support</span>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message-wrapper bot">
+        <img src="WhatsApp Image 2025-04-25 at 19.59.48_c80b0be0.jpg" class="chat-logo" alt="Logo" />
+        <div class="message bot-message">Hello! Welcome to Packaroo Support. How can I assist you today?</div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <div class="quick-suggestions" id="quickSuggestions">
+        <button class="suggestion-chip" onclick="handleSuggestion('How do I rent an item?')">How do I rent an
+          item?</button>
+        <button class="suggestion-chip" onclick="handleSuggestion('What are your rental prices?')">What are your rental
+          prices?</button>
+        <button class="suggestion-chip" onclick="handleSuggestion('How long is the rental period?')">How long is the
+          rental period?</button>
+        <button class="suggestion-chip" onclick="handleSuggestion('Do you offer delivery?')">Do you offer
+          delivery?</button>
+      </div>
+      <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)" />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const messageSent = document.getElementById('messageSent');
+    const messageReceived = document.getElementById('messageReceived');
+    let conversationCount = 0;
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    function handleSuggestion(text) {
+      document.getElementById('userInput').value = text;
+      sendMessage();
+    }
+
+    function showTypingIndicator() {
+      const typingDiv = document.createElement('div');
+      typingDiv.classList.add('message-wrapper', 'bot', 'typing-indicator');
+      typingDiv.innerHTML = `
+        <img src="WhatsApp Image 2025-04-25 at 19.59.48_c80b0be0.jpg" class="chat-logo" alt="Logo" />
+        <div class="typing-indicator">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      `;
+      document.getElementById('chatMessages').appendChild(typingDiv);
+      return typingDiv;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      if (!message) return;
+
+      const chatBox = document.getElementById('chatMessages');
+      messageSent.play();
+
+      const userWrapper = document.createElement('div');
+      userWrapper.classList.add('message-wrapper', 'user');
+      userWrapper.innerHTML = `
+        <img src="—Pngtree—avatar icon profile icon member_5247852.png" class="chat-logo" alt="Logo" />
+        <div class="message user-message">${message}</div>
+      `;
+      chatBox.appendChild(userWrapper);
+
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+      conversationCount++;
+
+      const typingIndicator = showTypingIndicator();
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      setTimeout(() => {
+        typingIndicator.remove();
+        messageReceived.play();
+        const botWrapper = document.createElement('div');
+        botWrapper.classList.add('message-wrapper', 'bot');
+        botWrapper.innerHTML = `
+          <img src="WhatsApp Image 2025-04-25 at 19.59.48_c80b0be0.jpg" class="chat-logo" alt="Logo" />
+          <div class="message bot-message">${getAutoReply(message)}</div>
+        `;
+        chatBox.appendChild(botWrapper);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        if (conversationCount >= 3) {
+          setTimeout(() => {
+            const thankYouWrapper = document.createElement('div');
+            thankYouWrapper.classList.add('message-wrapper', 'bot');
+            thankYouWrapper.innerHTML = `
+              <img src="WhatsApp Image 2025-04-25 at 19.59.48_c80b0be0.jpg" class="chat-logo" alt="Logo" />
+              <div class="message bot-message">Thank you for chatting with us! Is there anything else you'd like to know?</div>
+            `;
+            chatBox.appendChild(thankYouWrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+          }, 1000);
+        }
+      }, 1500);
+    }
+
+    function getAutoReply(userMsg) {
+      const lower = userMsg.toLowerCase();
+
+      if (lower.includes('rent') || lower.includes('how do i rent')) {
+        return "To rent an item, simply browse our catalog, select the item you want, choose your rental period, and proceed to checkout. You'll need to create an account if you haven't already.";
+      }
+      else if (lower.includes('price') || lower.includes('cost')) {
+        return "Our rental prices vary by item and duration. You can find detailed pricing in the 'Deals for You' section. We also offer special discounts for longer rental periods.";
+      }
+      else if (lower.includes('period') || lower.includes('how long')) {
+        return "We offer flexible rental periods from 1 day to several months. The minimum rental period is 24 hours, and you can extend your rental at any time.";
+      }
+      else if (lower.includes('delivery') || lower.includes('shipping')) {
+        return "Yes, we offer delivery and pickup services in select areas. Delivery charges vary based on your location and the size of the item. You can check delivery availability during checkout.";
+      }
+      else if (lower.includes('hello') || lower.includes('hi')) {
+        return "Hello! I'm your Packaroo support assistant. How can I help you today?";
+      }
+      else if (lower.includes('payment') || lower.includes('pay')) {
+        return "We accept all major credit cards, debit cards, and digital payment methods. Payment is processed securely at the time of booking.";
+      }
+      else if (lower.includes('damage') || lower.includes('insurance')) {
+        return "All our rentals come with basic insurance coverage. You can also opt for additional protection plans during checkout for extra peace of mind.";
+      }
+      else if (lower.includes('return') || lower.includes('pickup')) {
+        return "You can return items at our designated drop-off locations or schedule a pickup. Please ensure items are returned in the same condition as received.";
+      }
+      else {
+        return "I understand you're asking about " + userMsg + ". Let me connect you with our support team for a detailed response. In the meantime, is there anything specific about our rental services you'd like to know?";
+      }
+    }
+  </script>
+</body>
+
+</html>
