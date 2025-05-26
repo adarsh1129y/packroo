@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packro Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js for analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../Photoroom-20250429_234355.png" alt="Packro Logo" class="logo">
+                <h2>Packro Admin</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#products"><i class="fas fa-box"></i> Manage Products</a>
+                    </li>
+                    <li>
+                        <a href="#bookings"><i class="fas fa-calendar-check"></i> Bookings</a>
+                    </li>
+                    <li>
+                        <a href="#users"><i class="fas fa-users"></i> Users</a>
+                    </li>
+                    <li>
+                        <a href="#services"><i class="fas fa-concierge-bell"></i> Services</a>
+                    </li>
+                    <li>
+                        <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
+                    </li>
+                    <li>
+                        <a href="#promo"><i class="fas fa-tag"></i> Promo Codes</a>
+                    </li>
+                    <li>
+                        <a href="#support"><i class="fas fa-headset"></i> Customer Support</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="top-bar-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="profile-menu">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff" alt="Admin">
+                        <span>Admin</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e3f2fd;">
+                            <i class="fas fa-box" style="color: #1976d2;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Rentals</h3>
+                            <p class="stat-number">1,234</p>
+                            <span class="stat-trend positive">+12.5%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e8f5e9;">
+                            <i class="fas fa-users" style="color: #2e7d32;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Active Users</h3>
+                            <p class="stat-number">856</p>
+                            <span class="stat-trend positive">+8.2%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #fff3e0;">
+                            <i class="fas fa-rupee-sign" style="color: #f57c00;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Earnings</h3>
+                            <p class="stat-number">₹2.5M</p>
+                            <span class="stat-trend positive">+15.3%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #fce4ec;">
+                            <i class="fas fa-star" style="color: #c2185b;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Average Rating</h3>
+                            <p class="stat-number">4.8</p>
+                            <span class="stat-trend positive">+0.2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Revenue Overview</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Popular Categories</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Bookings Table -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3>Recent Bookings</h3>
+                        <button class="view-all">View All</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Customer</th>
+                                    <th>Product</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#BK001</td>
+                                    <td>John Doe</td>
+                                    <td>DJI Drone</td>
+                                    <td>2024-03-15</td>
+                                    <td>₹2,999</td>
+                                    <td><span class="status active">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#BK002</td>
+                                    <td>Jane Smith</td>
+                                    <td>Canon DSLR</td>
+                                    <td>2024-03-14</td>
+                                    <td>₹1,499</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#BK003</td>
+                                    <td>Mike Johnson</td>
+                                    <td>Camping Tent</td>
+                                    <td>2024-03-13</td>
+                                    <td>₹500</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Product Upload Form -->
+                <div class="form-card">
+                    <h3>Add New Product</h3>
+                    <form id="productForm" class="product-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="productTitle">Product Title</label>
+                                <input type="text" id="productTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productCategory">Category</label>
+                                <select id="productCategory" required>
+                                    <option value="">Select Category</option>
+                                    <option value="drones">Drones</option>
+                                    <option value="cameras">Cameras</option>
+                                    <option value="camping">Camping Gear</option>
+                                    <option value="accessories">Accessories</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="productPrice">Price (₹)</label>
+                                <input type="number" id="productPrice" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productAvailability">Availability</label>
+                                <select id="productAvailability" required>
+                                    <option value="in-stock">In Stock</option>
+                                    <option value="out-of-stock">Out of Stock</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productDescription">Description</label>
+                            <textarea id="productDescription" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="productImages">Product Images</label>
+                            <div class="image-upload">
+                                <input type="file" id="productImages" multiple accept="image/*">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag & drop images here or click to browse</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Add Product</button>
+                            <button type="reset" class="btn-secondary">Reset</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Customer Support Section -->
+                <div class="support-section" id="support">
+                    <div class="support-header">
+                        <h3>Customer Support</h3>
+                        <div class="support-filters">
+                            <select id="statusFilter">
+                                <option value="all">All Conversations</option>
+                                <option value="active">Active</option>
+                                <option value="resolved">Resolved</option>
+                            </select>
+                            <input type="text" placeholder="Search conversations..." id="conversationSearch">
+                        </div>
+                    </div>
+
+                    <div class="support-container">
+                        <!-- Conversations List -->
+                        <div class="conversations-list">
+                            <div class="conversation-item active">
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=0D8ABC&color=fff"
+                                        alt="User">
+                                    <div class="user-details">
+                                        <h4>John Doe</h4>
+                                        <p class="last-message">I have a question about my booking...</p>
+                                    </div>
+                                </div>
+                                <div class="conversation-meta">
+                                    <span class="time">2m ago</span>
+                                    <span class="status-badge active">Active</span>
+                                </div>
+                            </div>
+                            <div class="conversation-item">
+                                <div class="user-info">
+                                    <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=2e7d32&color=fff"
+                                        alt="User">
+                                    <div class="user-details">
+                                        <h4>Jane Smith</h4>
+                                        <p class="last-message">Thank you for your help!</p>
+                                    </div>
+                                </div>
+                                <div class="conversation-meta">
+                                    <span class="time">1h ago</span>
+                                    <span class="status-badge resolved">Resolved</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Interface -->
+                        <div class="chat-interface">
+                            <div class="chat-header">
+                                <div class="chat-user-info">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=0D8ABC&color=fff"
+                                        alt="User">
+                                    <div>
+                                        <h4>John Doe</h4>
+                                        <span class="user-status">Online</span>
+                                    </div>
+                                </div>
+                                <div class="chat-actions">
+                                    <button class="btn-icon" title="Mark as resolved">
+                                        <i class="fas fa-check-circle"></i>
+                                    </button>
+                                    <button class="btn-icon" title="Transfer conversation">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="chat-messages">
+                                <div class="message user-message">
+                                    <div class="message-content">
+                                        <p>Hi, I have a question about my booking #BK001</p>
+                                        <span class="message-time">10:30 AM</span>
+                                    </div>
+                                </div>
+                                <div class="message admin-message">
+                                    <div class="message-content">
+                                        <p>Hello John! I'd be happy to help you with your booking. What would you like
+                                            to know?</p>
+                                        <span class="message-time">10:31 AM</span>
+                                    </div>
+                                </div>
+                                <div class="message user-message">
+                                    <div class="message-content">
+                                        <p>I need to change the pickup date. Is that possible?</p>
+                                        <span class="message-time">10:32 AM</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="chat-input">
+                                <div class="input-actions">
+                                    <button class="btn-icon" title="Attach file">
+                                        <i class="fas fa-paperclip"></i>
+                                    </button>
+                                    <button class="btn-icon" title="Add quick response">
+                                        <i class="fas fa-comment-dots"></i>
+                                    </button>
+                                </div>
+                                <textarea placeholder="Type your message..." id="messageInput"></textarea>
+                                <button class="btn-primary send-message">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
