@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Packroo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .notification-item {
+            transition: all 0.3s ease;
+        }
+
+        .notification-item:hover {
+            background-color: #f3f4f6;
+        }
+
+        .notification-item.unread {
+            background-color: #eff6ff;
+        }
+
+        .notification-item.unread:hover {
+            background-color: #dbeafe;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </a>
+                <h1 class="text-xl font-bold">Notifications</h1>
+            </div>
+            <button class="text-white hover:text-blue-200 transition-colors" onclick="markAllAsRead()">
+                Mark all as read
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 max-w-2xl">
+        <!-- Today's Notifications -->
+        <div class="mb-6">
+            <h2 class="text-lg font-semibold text-gray-700 mb-3">Today</h2>
+            <div class="space-y-3">
+                <div class="notification-item unread bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-gray-800 font-medium">Your rental request has been approved!</p>
+                            <p class="text-sm text-gray-600">Your GoPro camera rental has been confirmed for tomorrow.
+                            </p>
+                            <p class="text-xs text-gray-500 mt-1">2 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notification-item unread bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-gray-800 font-medium">Payment Successful</p>
+                            <p class="text-sm text-gray-600">Your payment of ₹2,500 has been processed successfully.</p>
+                            <p class="text-xs text-gray-500 mt-1">5 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earlier Notifications -->
+        <div>
+            <h2 class="text-lg font-semibold text-gray-700 mb-3">Earlier</h2>
+            <div class="space-y-3">
+                <div class="notification-item bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-gray-800 font-medium">Return Reminder</p>
+                            <p class="text-sm text-gray-600">Your tent rental is due for return tomorrow.</p>
+                            <p class="text-xs text-gray-500 mt-1">Yesterday</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notification-item bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0">
+                            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-gray-800 font-medium">New Promotion</p>
+                            <p class="text-sm text-gray-600">Get 20% off on your next rental with code: SUMMER20</p>
+                            <p class="text-xs text-gray-500 mt-1">2 days ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div class="flex justify-around items-center p-3">
+            <a href="index.html" class="flex flex-col items-center text-gray-600">
+                <img src="—Pngtree—vector house icon_4013710 - Copy.png" alt="Home" class="w-6 h-6">
+                <span class="text-xs mt-1">Home</span>
+            </a>
+            <a href="../category/index.html" class="flex flex-col items-center text-gray-600">
+                <img src="category_16079561.png" alt="Category" class="w-6 h-6">
+                <span class="text-xs mt-1">Category</span>
+            </a>
+            <a href="../wheel/index.html" class="flex flex-col items-center text-gray-600">
+                <img src="pngwing.com (42) - Copy.png" alt="Wheel" class="w-6 h-6">
+                <span class="text-xs mt-1">Wheel</span>
+            </a>
+            <a href="../location/index.html" class="flex flex-col items-center text-gray-600">
+                <img src="pngwing.com (41) - Copy.png" alt="Location" class="w-6 h-6">
+                <span class="text-xs mt-1">Location</span>
+            </a>
+            <a href="../profile.html" class="flex flex-col items-center text-gray-600">
+                <img src="—Pngtree—avatar icon profile icon member_5247852.png" alt="Profile" class="w-6 h-6">
+                <span class="text-xs mt-1">Profile</span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function markAllAsRead() {
+            const unreadNotifications = document.querySelectorAll('.notification-item.unread');
+            unreadNotifications.forEach(notification => {
+                notification.classList.remove('unread');
+            });
+        }
+
+        // Add click handler to individual notifications
+        document.querySelectorAll('.notification-item').forEach(item => {
+            item.addEventListener('click', function () {
+                this.classList.remove('unread');
+            });
+        });
+    </script>
+</body>
+
+</html>
